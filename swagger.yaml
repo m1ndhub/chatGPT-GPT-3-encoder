@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: GPT-3 Encoder API
+basePath: /
+paths:
+  /token/length:
+    post:
+      summary: Get encoded string length
+      consumes:
+        - text/plain
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: inputString
+          description: The string to be encoded and its token length calculated and show tokenID
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              string:
+                type: string
+                description: The original input string
+              encodedString:
+                type: string
+                description: The encoded string
+              encodedLength:
+                type: integer
+                description: The length of the encoded string
+        400:
+          description: Invalid request
+        500:
+          description: Internal server error
